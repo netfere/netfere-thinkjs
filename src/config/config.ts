@@ -5,10 +5,8 @@ module.exports = {
   accessTokenName: "x-access-token",
   // 服务器上添加数据库用户 https://blog.csdn.net/dutsoft/article/details/78043053
   mongoConnecting: {
-    host: '10.10.10.20',
-    port: 39000,
-    user: 'tester',
-    password: 'tian00di00',
+    host: '127.0.0.1',
+    port: 27017,
     database: 'test',
     options: {
       useUnifiedTopology: true,
