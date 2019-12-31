@@ -1,5 +1,5 @@
-import netferejs from '../../../netfere-ts';
-import { AxiosClass, AxiosRequestConfig } from '../../../netfere-ts/lib/axios';
+import netferejs from '../../../netfere-ts/node';
+import { AxiosClass } from '../../../netfere-ts/node/axios';
 const pinyin = require('pinyin');
 import * as crypto from 'crypto';
 import * as mongoose from 'mongoose';
@@ -9,7 +9,7 @@ export interface INetfere extends INetfereJs {
     md5: (value: string) => string;
     pinyin: (source: string) => string;
     ObjectId: (value?: string) => mongoose.Types.ObjectId;
-    query: (options: AxiosRequestConfig) => Promise<any>;
+    query: (options: any) => Promise<any>;
 }
 
 const ExNetfere: INetfere = {
@@ -32,7 +32,7 @@ const ExNetfere: INetfere = {
             return mongoose.Types.ObjectId();
         }
     },
-    query(options: AxiosRequestConfig): Promise<any> {
+    query(options: any): Promise<any> {
         const instance = new AxiosClass({
             interceptor: false
         });
