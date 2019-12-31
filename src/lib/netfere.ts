@@ -1,13 +1,15 @@
 import netferejs from '../../../netfere-ts';
+import { AxiosClass, AxiosRequestConfig } from '../../../netfere-ts/lib/axios';
 const pinyin = require('pinyin');
 import * as crypto from 'crypto';
 import * as mongoose from 'mongoose';
 type INetfereJs = typeof netferejs;
 
 export interface INetfere extends INetfereJs {
-    'md5': (value: string) => string;
-    'pinyin': (source: string) => string;
-    'ObjectId': (value?: string) => mongoose.Types.ObjectId;
+    md5: (value: string) => string;
+    pinyin: (source: string) => string;
+    ObjectId: (value?: string) => mongoose.Types.ObjectId;
+    query: (options: AxiosRequestConfig) => Promise<any>;
 }
 
 const ExNetfere: INetfere = {
@@ -29,6 +31,12 @@ const ExNetfere: INetfere = {
         } else {
             return mongoose.Types.ObjectId();
         }
+    },
+    query(options: AxiosRequestConfig): Promise<any> {
+        const instance = new AxiosClass({
+            interceptor: false
+        });
+        return instance.query(options);
     }
 };
 export function NetfereInit(app: any) {
