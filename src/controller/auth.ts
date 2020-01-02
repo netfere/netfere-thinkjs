@@ -2,7 +2,7 @@ import { think } from 'thinkjs';
 import Base from './base.js';
 // access-token的键名
 const ACCESSKEY = think.config('accessTokenName');
-const JWTSECRET = think.config('jwtSecret');
+
 export default class extends Base {
     __before() {
         super.__before();
@@ -14,13 +14,13 @@ export default class extends Base {
         if (global.$.isEmpty(token)) {
             res = global.$.res({ success: false, msg: '没有登陆' });
         } else {
-            const {success,payload} = global.$.jwtVaild(JWTSECRET,token);
-            if(success){
-                this.token=payload.data;
-                if(global.$.has(this.token,'unique')){
-                    this.token['unique']=global.$.ObjectId(this.token.unique);
+            const { success, payload } = global.$.jwt.decode(token);
+            if (success) {
+                this.token = payload.data;
+                if (global.$.has(this.token, 'unique')) {
+                    this.token.unique = global.$.ObjectId(this.token.unique);
                 }
-            }else{
+            } else {
                 res = global.$.res({ success: false, msg: '登陆已过期' });
             }
         }

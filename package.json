@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/mongoose": "^5.5.28",
+    "jwt-simple": "^0.5.6",
     "mongoose": "^5.7.7",
     "pinyin": "^2.9.0",
     "think-cache": "^1.0.7",
@@ -29,6 +30,7 @@
     "@types/koa": "*",
     "babel-runtime": "^6.26.0",
     "node-notifier": "^5.0.2",
+    "think-babel": "^2.0.0",
     "think-inspect": "0.0.2",
     "think-typescript": "^1.0.4",
     "think-watcher": "^3.0.0",
