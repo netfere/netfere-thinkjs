@@ -29,7 +29,7 @@
   "devDependencies": {
     "@types/koa": "*",
     "babel-runtime": "^6.26.0",
-    "node-notifier": "^5.0.2",
+    "node-notifier": "^8.0.1",
     "think-babel": "^2.0.0",
     "think-inspect": "0.0.2",
     "think-typescript": "^1.0.4",
